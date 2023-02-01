@@ -3,6 +3,7 @@ package controller;
 import java.io.*;
 
 import Service.ProductService;
+import Service.StatusService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
@@ -14,9 +15,5 @@ public class ProductServlet extends HttpServlet {
         request.setAttribute("sanphams", ProductService.products);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/showProduct.jsp");
         dispatcher.forward(request,response);
-//        RequestDispatcher dispatcher1 = request.getRequestDispatcher("/shopadmin.jsp");
-//        dispatcher1.forward(request,response);
-//        RequestDispatcher dispatcher2 = request.getRequestDispatcher("/shopuser.jsp");
-//        dispatcher2.forward(request,response);
     }
 }

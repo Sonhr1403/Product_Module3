@@ -12,7 +12,11 @@ public class CRUD_Product {
     static Connection connection = Connect_MySql.getConnect();
 
     public static List<Product> getAll(){
-        String sql = "Select * from products";
+//        String sql = "Select * from products";
+        String sql = "SELECT id,products.name,img,price,status.name as status_name\n" +
+                "FROM products\n" +
+                "join status\n" +
+                "on products.id_status = status.id_status";
         List<Product> products = new ArrayList<>();
         try {
             // tạo cái xe để đưa câu lệnh sql qua CSDL
@@ -24,8 +28,8 @@ public class CRUD_Product {
                 String name = resultSet.getString("name");
                 String img = resultSet.getString("img");
                 double price = resultSet.getDouble("price");
-                String status = resultSet.getString("status");
-                products.add(new Product(id,name,img, price,status));
+                String status_name = resultSet.getString("status_name");
+                products.add(new Product(id,name,img, price,status_name));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -35,12 +39,12 @@ public class CRUD_Product {
 
     public static void save(Product product){
         try {
-            String sql = "insert into products(name, img, price,status) value (?,?,?,?)";
+            String sql = "insert into products(name, img, price,id_status) value (?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, product.getName());
             preparedStatement.setString(2, product.getImg());
             preparedStatement.setDouble(3,product.getPrice());
-            preparedStatement.setString(4, product.getStatus());
+            preparedStatement.setInt(4, product.getStatus());
             preparedStatement.execute();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -100,12 +104,12 @@ public class CRUD_Product {
     }
     public static void edit(Product product){
         try {
-            String sql = "update products set name = ?, img = ?, price =?,status=? where id = ?";
+            String sql = "update products set name = ?, img = ?, price =?,id_status=? where id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, product.getName());
             preparedStatement.setString(2, product.getImg());
             preparedStatement.setDouble(3,product.getPrice());
-            preparedStatement.setString(4, product.getStatus());
+            preparedStatement.setInt(4, product.getStatus());
             preparedStatement.setInt(5,product.getId());
             preparedStatement.execute();
         } catch (SQLException throwables) {
@@ -122,12 +126,11 @@ public class CRUD_Product {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()){
-                int id1 = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 String img = resultSet.getString("img");
                 double price = resultSet.getDouble("price");
-                String status = resultSet.getString("status");
-                return new Product(id1, name,img, price,status);
+                int id_status = Integer.parseInt(resultSet.getString("id_status"));
+                return new Product(id, name,img, price,id_status);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();

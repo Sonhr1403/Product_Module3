@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: My PC
@@ -13,7 +14,7 @@
 <body >
 <h2>Create Product</h2>
 <div>
-    <form action="/create">
+    <form action="/create" method="post">
         <table>
             <tr>
                 <td>Nhập name</td>
@@ -26,6 +27,16 @@
             <tr>
                 <td>Nhập price</td>
                 <td><input name="price" placeholder="nhập price"></td>
+            </tr>
+            <tr>
+                <td>Chọn status</td>
+                <td>
+                    <select name="id_status">
+                        <c:forEach items="${list_status}" var="ls">
+                            <option value="${ls.id}">${ls.name}</option>
+                        </c:forEach>
+                    </select>
+                </td>
             </tr>
         </table>
         <button type="submit">Submit</button>

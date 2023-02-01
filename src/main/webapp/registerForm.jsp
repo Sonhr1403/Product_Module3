@@ -64,7 +64,7 @@
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="text" name="birthday" class="form-control" id="floatingInputBirthday" placeholder="myaddress" required autofocus>
+                            <input type="date" name="birthday" class="form-control" id="floatingInputBirthday" placeholder="myaddress" required autofocus>
                             <label for="floatingInputBirthday">Birthday</label>
                         </div>
 

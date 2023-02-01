@@ -1,3 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +23,7 @@
     <!-- Responsive-->
     <link rel="stylesheet" href="css/responsive.css">
     <!-- fevicon -->
-    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <link rel="icon" href="/images/fevicon.png" type="image/gif"/>
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
     <!-- Tweaks for older IEs-->
@@ -28,7 +31,8 @@
     <!-- owl stylesheets -->
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+          media="screen">
 </head>
 <body>
 <!-- header section start -->
@@ -36,7 +40,8 @@
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="logo"><a href="/index.jsp"><img src="images/logo.png"></a></div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -63,7 +68,16 @@
                 <div class="search_icon">
                     <ul>
                         <li><a href="#"><img src="images/search-icon.png"></a></li>
-                        <li><a href="/signInForm.jsp">LOGIN</a></li>
+                        <c:choose>
+                            <c:when test="${sessionScope.get('account') != null}">
+<%--                                <c:when test="${sessionScope.get('account').id_role == 1}"></c:when>--%>
+                                <li><a href="/signInForm.jsp">Welcome ${sessionScope.get('account').email}</a></li>
+                            </c:when>
+
+                            <c:otherwise>
+                                <li><a href="/signInForm.jsp">LOGIN</a></li>
+                            </c:otherwise>
+                        </c:choose>
                     </ul>
                 </div>
             </div>
@@ -78,21 +92,24 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <h1 class="furniture_text">FURNITURE</h1>
-                    <p class="there_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some fo</p>
+                    <p class="there_text">There are many variations of passages of Lorem Ipsum available, but the
+                        majority have suffered alteration in some fo</p>
                     <div class="contact_bt_main">
                         <div class="contact_bt"><a href="/contact.jsp">Contact Us</a></div>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <h1 class="furniture_text">FURNITURE</h1>
-                    <p class="there_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some fo</p>
+                    <p class="there_text">There are many variations of passages of Lorem Ipsum available, but the
+                        majority have suffered alteration in some fo</p>
                     <div class="contact_bt_main">
                         <div class="contact_bt"><a href="/contact.jsp">Contact Us</a></div>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <h1 class="furniture_text">FURNITURE</h1>
-                    <p class="there_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some fo</p>
+                    <p class="there_text">There are many variations of passages of Lorem Ipsum available, but the
+                        majority have suffered alteration in some fo</p>
                     <div class="contact_bt_main">
                         <div class="contact_bt"><a href="/contact.jspl">Contact Us</a></div>
                     </div>
@@ -158,7 +175,10 @@
         <div class="row">
             <div class="col-md-6">
                 <h1 class="about_text">About Us</h1>
-                <p class="lorem_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believableThere are many variations of passages of Lorem Ipsum available, but the majority have able</p>
+                <p class="lorem_text">There are many variations of passages of Lorem Ipsum available, but the majority
+                    have suffered alteration in some form, by injected humour, or randomised words which don't look even
+                    slightly believableThere are many variations of passages of Lorem Ipsum available, but the majority
+                    have able</p>
                 <div class="read_bt1"><a href="#">Read More</a></div>
             </div>
             <div class="col-md-6">
@@ -185,7 +205,9 @@
                         </div>
                     </div>
                     <h3 class="temper_text">Tempor incididunt ut labore et dolore</h3>
-                    <p class="dololr_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi </p>
+                    <p class="dololr_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi </p>
                 </div>
                 <div class="col-md-6">
                     <div class="container_main">
@@ -197,7 +219,9 @@
                         </div>
                     </div>
                     <h3 class="temper_text">Tempor incididunt ut labore et dolore</h3>
-                    <p class="dololr_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi </p>
+                    <p class="dololr_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi </p>
                 </div>
             </div>
         </div>
@@ -209,7 +233,11 @@
     <div class="container">
         <h1 class="who_taital">who we are ?</h1>
         <h4 class="designer_text">DESIGNERS & INNOVATORS</h4>
-        <p class="lorem_ipsum_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi utLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut</p>
+        <p class="lorem_ipsum_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi utLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+            ut</p>
     </div>
     <div class="get_bt_main">
         <div class="get_bt"><a href="#">Get A Quote</a></div>
@@ -362,7 +390,9 @@
                                 </div>
                                 <div class="col-sm-9">
                                     <h1 class="loksans_text">loksans</h1>
-                                    <p class="dolor_ipsum_text">ipsum dolor sit amet, consectetur adipiscing elit, sed  veniam, quis nostrud exercitation ullamco laboris nisi ut reprehenderit in voluptate velit</p>
+                                    <p class="dolor_ipsum_text">ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                        veniam, quis nostrud exercitation ullamco laboris nisi ut reprehenderit in
+                                        voluptate velit</p>
                                 </div>
                             </div>
                         </div>
@@ -374,7 +404,9 @@
                                 </div>
                                 <div class="col-sm-9">
                                     <h1 class="loksans_text">loksans</h1>
-                                    <p class="dolor_ipsum_text">ipsum dolor sit amet, consectetur adipiscing elit, sed  veniam, quis nostrud exercitation ullamco laboris nisi ut reprehenderit in voluptate velit</p>
+                                    <p class="dolor_ipsum_text">ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                        veniam, quis nostrud exercitation ullamco laboris nisi ut reprehenderit in
+                                        voluptate velit</p>
                                 </div>
                             </div>
                         </div>
@@ -392,7 +424,9 @@
                                 </div>
                                 <div class="col-sm-9">
                                     <h1 class="loksans_text">loksans</h1>
-                                    <p class="dolor_ipsum_text">ipsum dolor sit amet, consectetur adipiscing elit, sed  veniam, quis nostrud exercitation ullamco laboris nisi ut reprehenderit in voluptate velit</p>
+                                    <p class="dolor_ipsum_text">ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                        veniam, quis nostrud exercitation ullamco laboris nisi ut reprehenderit in
+                                        voluptate velit</p>
                                 </div>
                             </div>
                         </div>
@@ -404,7 +438,9 @@
                                 </div>
                                 <div class="col-sm-9">
                                     <h1 class="loksans_text">loksans</h1>
-                                    <p class="dolor_ipsum_text">ipsum dolor sit amet, consectetur adipiscing elit, sed  veniam, quis nostrud exercitation ullamco laboris nisi ut reprehenderit in voluptate velit</p>
+                                    <p class="dolor_ipsum_text">ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                        veniam, quis nostrud exercitation ullamco laboris nisi ut reprehenderit in
+                                        voluptate velit</p>
                                 </div>
                             </div>
                         </div>
@@ -422,7 +458,9 @@
                                 </div>
                                 <div class="col-sm-9">
                                     <h1 class="loksans_text">loksans</h1>
-                                    <p class="dolor_ipsum_text">ipsum dolor sit amet, consectetur adipiscing elit, sed  veniam, quis nostrud exercitation ullamco laboris nisi ut reprehenderit in voluptate velit</p>
+                                    <p class="dolor_ipsum_text">ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                        veniam, quis nostrud exercitation ullamco laboris nisi ut reprehenderit in
+                                        voluptate velit</p>
                                 </div>
                             </div>
                         </div>
@@ -434,7 +472,9 @@
                                 </div>
                                 <div class="col-sm-9">
                                     <h1 class="loksans_text">loksans</h1>
-                                    <p class="dolor_ipsum_text">ipsum dolor sit amet, consectetur adipiscing elit, sed  veniam, quis nostrud exercitation ullamco laboris nisi ut reprehenderit in voluptate velit</p>
+                                    <p class="dolor_ipsum_text">ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                        veniam, quis nostrud exercitation ullamco laboris nisi ut reprehenderit in
+                                        voluptate velit</p>
                                 </div>
                             </div>
                         </div>
@@ -452,7 +492,9 @@
                                 </div>
                                 <div class="col-sm-9">
                                     <h1 class="loksans_text">loksans</h1>
-                                    <p class="dolor_ipsum_text">ipsum dolor sit amet, consectetur adipiscing elit, sed  veniam, quis nostrud exercitation ullamco laboris nisi ut reprehenderit in voluptate velit</p>
+                                    <p class="dolor_ipsum_text">ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                        veniam, quis nostrud exercitation ullamco laboris nisi ut reprehenderit in
+                                        voluptate velit</p>
                                 </div>
                             </div>
                         </div>
@@ -464,7 +506,9 @@
                                 </div>
                                 <div class="col-sm-9">
                                     <h1 class="loksans_text">loksans</h1>
-                                    <p class="dolor_ipsum_text">ipsum dolor sit amet, consectetur adipiscing elit, sed  veniam, quis nostrud exercitation ullamco laboris nisi ut reprehenderit in voluptate velit</p>
+                                    <p class="dolor_ipsum_text">ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                        veniam, quis nostrud exercitation ullamco laboris nisi ut reprehenderit in
+                                        voluptate velit</p>
                                 </div>
                             </div>
                         </div>
@@ -542,7 +586,8 @@
             </div>
         </div>
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Enter your email" aria-label="Enter your email" aria-describedby="basic-addon2">
+            <input type="text" class="form-control" placeholder="Enter your email" aria-label="Enter your email"
+                   aria-describedby="basic-addon2">
             <div class="input-group-append">
                 <span class="input-group-text" id="basic-addon2"><a href="#">Subscribe</a></span>
             </div>
@@ -561,20 +606,22 @@
                 <li><a href="#"><img src="images/linkedin-icon.png"></a></li>
             </ul>
         </div>
-        <p class="copyright_text">2020 All Rights Reserved. Design by <a href="https://html.design">Free html  Templates</a></p>
+        <p class="copyright_text">2020 All Rights Reserved. Design by <a href="https://html.design">Free html
+            Templates</a></p>
     </div>
-    <!-- copyright section end -->
-    <!-- Javascript files-->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery-3.0.0.min.js"></script>
-    <script src="js/plugin.js"></script>
-    <!-- sidebar -->
-    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="js/custom.js"></script>
-    <!-- javascript -->
-    <script src="js/owl.carousel.js"></script>
-    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+</div>
+<!-- copyright section end -->
+<!-- Javascript files-->
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/jquery-3.0.0.min.js"></script>
+<script src="js/plugin.js"></script>
+<!-- sidebar -->
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="js/custom.js"></script>
+<!-- javascript -->
+<script src="js/owl.carousel.js"></script>
+<script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 </body>
 </html>

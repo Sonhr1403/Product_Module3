@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebFilter("/user.jsp")
+@WebFilter("/index.jsp")
 public class UserFilter extends HttpFilter {
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpSession session = req.getSession();
@@ -24,7 +24,7 @@ public class UserFilter extends HttpFilter {
             chain.doFilter(req,res);
         } else {
             PrintWriter printWriter = res.getWriter();
-            printWriter.println("<h1>Không có quyền truy cập</h1>");
+            printWriter.println("<h1>You don't have access to this page</h1>");
         }
     }
 }

@@ -46,7 +46,7 @@ public class CartServlet extends HttpServlet {
             default:
                 Product product = CRUD_Product.findById(id);
                 if(product != null){
-                    if (product.getStatus().equals("còn hàng")){
+                    if (product.getStatus() == 1){
                         productsCart.add(product);
                     }
                 }
